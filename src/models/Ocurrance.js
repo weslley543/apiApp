@@ -15,8 +15,12 @@ const OcurranceSchema = new mongoose.Schema({
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:User,
+        ref:'User',
         require:true
+    },
+    img:{
+        type:String,
+        required:true
     },
     createdAt:{
         type:Date,
@@ -25,6 +29,8 @@ const OcurranceSchema = new mongoose.Schema({
     },
     resolvedAt:{
         type:Date,
-        require:true
+        require:false
     }
 });
+
+module.exports = mongoose.model('Ocurrance', OcurranceSchema);
