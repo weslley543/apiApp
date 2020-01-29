@@ -19,6 +19,4 @@ app.use(ocurranceRoutes);
 
 app.use(cors());
 
-console.log('Server on na porta 3333');
-
 app.listen(3333);
