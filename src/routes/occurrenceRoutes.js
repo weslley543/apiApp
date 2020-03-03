@@ -3,14 +3,14 @@ const multer = require('multer');
 const uploadConfig = require('../config/upload');
 const Ocurrence = require('../controllers/Ocurrance')
 const authmiddlaware = require('../middlewares/auth');
-
+const imageResize = require('../config/imageRezise')
 const ocurrenceRoutes = express.Router();
 
 // ocurrenceRoutes.use(authmiddlaware);
 
 const upload = multer(uploadConfig);
 
-ocurrenceRoutes.post('/ocurrance',upload.single('img') ,(req,res)=>{
+ocurrenceRoutes.post('/ocurrance',upload.single('img'),imageResize('img') ,(req,res)=>{
     Ocurrence.register(req,res);
 });
 
