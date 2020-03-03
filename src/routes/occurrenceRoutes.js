@@ -6,7 +6,7 @@ const authmiddlaware = require('../middlewares/auth');
 const ocurrenceRoutes = express.Router();
 
 
-ocurrenceRoutes.use(authmiddlaware);
+// ocurrenceRoutes.use(authmiddlaware);
 
 const upload = multer(uploadConfig);
 
