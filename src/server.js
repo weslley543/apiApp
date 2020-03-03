@@ -3,6 +3,8 @@ const userRoutes = require('./routes/userRoutes');
 const ocurranceRoutes = require('./routes/occurrenceRoutes');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
+
 
 
 
@@ -19,4 +21,9 @@ app.use(ocurranceRoutes);
 
 app.use(cors());
 
-app.listen(3333);
+app.use('/files',express.static(path.resolve(__dirname,"..","uploads")));
+const port = process.env.PORT || 3333;
+
+app.listen(port, function(){
+    console.log("Servidor ON na porta", port);
+});

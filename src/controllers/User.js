@@ -6,9 +6,9 @@ const authConfig = require('../config/auth');
 module.exports = {
     async login (req,res){
         const {email, password} = req.body;
-        
         let hash = crypto.createHash("SHA512").update(password).digest("hex");
-        
+        console.log('login');
+       try{
         let user = await User.findOne({email}).select('+password');
         if(!user){
             res.status(400).json({msg:'Usuario não cadastrado '});
@@ -22,6 +22,10 @@ module.exports = {
         const token = jwt.sign({id:user.id}, authConfig.secret,{expiresIn:86400})
         
         res.send({user, token}); 
+       }
+       catch(err){
+           res.status(401).json({msg:'err'});
+       }
 
     },
     async store(req, res){

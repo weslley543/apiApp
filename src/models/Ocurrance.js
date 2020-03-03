@@ -31,6 +31,15 @@ const OcurranceSchema = new mongoose.Schema({
         type:Date,
         require:false
     }
-});
+},{
+    toJSON:{
+        virtuals:true,
+    }
+}
+);
+
+OcurranceSchema.virtual('img_url').get(function(){
+    return `http://localhost:3333/files/${this.img}`
+})
 
 module.exports = mongoose.model('Ocurrance', OcurranceSchema);
