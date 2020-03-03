@@ -39,7 +39,7 @@ const OcurranceSchema = new mongoose.Schema({
 );
 
 OcurranceSchema.virtual('img_url').get(function(){
-    return `http://localhost:3333/files/${this.img}`
+    return `https://cirsope.herokuapp.com/files/${this.img}`
 })
 
 module.exports = mongoose.model('Ocurrance', OcurranceSchema);
