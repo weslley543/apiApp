@@ -14,7 +14,7 @@ mongoose.connect('mongodb+srv://weslley:weslley1234@cluster0-tcv4s.mongodb.net/C
     useUnifiedTopology:true,
     useCreateIndex: true
 });
-app.use(cors('http://localhost:3000'));
+app.use(cors());
 app.use(express.json());
 app.use(userRoutes);
 app.use(ocurranceRoutes);
