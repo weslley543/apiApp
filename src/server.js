@@ -14,12 +14,11 @@ mongoose.connect('mongodb+srv://weslley:weslley1234@cluster0-tcv4s.mongodb.net/C
     useUnifiedTopology:true,
     useCreateIndex: true
 });
-
+app.use(cors());
 app.use(express.json());
 app.use(userRoutes);
 app.use(ocurranceRoutes);
 
-app.use(cors());
 
 app.use('/files',express.static(path.resolve(__dirname,"..","uploads")));
 const port = process.env.PORT || 3333;
