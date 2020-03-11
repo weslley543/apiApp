@@ -3,55 +3,60 @@ const mongoose = require('mongoose');
 const TruckSchema = new mongoose.Schema({
     initialWeight: {
         type:Number,
-        required:true
+        require:true
     },
     finalWeight:{
         type:Number,
-        required:true
+        require:true
     },
     patioInitialKilometrage:{
         type:Number,
-        required:true
+        require:true
     },
     setorInitialKilometrage:{
         type:Number,
-        required:true
+        require:true
     },
-    setorFinalKilometrage:{
+    setorInitialKilometrage:{
         type:Number,
-        required:true
+        require:true
     },
     patioFinalKilometrage:{
         type:Number,
-        required:true
+        require:true
     },
     date:{
         type:Date,
-        required:true
+        require:true,
+        default:Date.now
     },
     patioHourStartExiting:{
         type:Date,
-        required:true
+        require:true
     },
     patioHourStartSector:{
         type:Date,
-        required:true
+        require:true
     },
     patioHourFinalSector:{
         type:Date,
-        required:true
+        require:true
     },
     patioHourFinalPatio:{
         type:Date,
-        required:true
+        require:true
     },
     stocked:{
         type:Boolean,
-        required:true
+        require:false
     },
     litersStocked:{
         type:Number,
-        required:false
+        require:false
+    },
+    vehiclePlate:{
+        type:String,
+        require:false
     }
 
 });

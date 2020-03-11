@@ -17,7 +17,7 @@ truckRoutes.delete('/truck/:id', (req,res)=>{
     truckController.delete(req,res);
 });
 
-truckRoutes.update('/truck/:id', (req,res)=>{
+truckRoutes.put('/truck/:id', (req,res)=>{
     truckController.update(req,res);
 });
 
