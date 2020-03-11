@@ -21,7 +21,7 @@ app.use(ocurranceRoutes);
 
 
 app.use('/files',express.static(path.resolve(__dirname,"..","uploads")));
-const port = process.env.PORT || 3333;
+const port = process.env.PORT || 8080;
 
 app.listen(port, function(){
     console.log("Servidor ON na porta", port);
