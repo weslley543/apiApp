@@ -17,7 +17,7 @@ module.exports={
         try{
             const {user} = req.headers
             console.log(req.headers);
-            const ocurrances = await Ocurrance.find({user}).populate('user');
+            const ocurrances = await Ocurrance.find().populate('user');
             res.json(ocurrances);
         }catch(ocurrance){
             res.json({msg:'Erro ao receber as ocorrencias'});
