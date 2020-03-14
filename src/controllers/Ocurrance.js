@@ -15,7 +15,7 @@ module.exports={
     },
     async index(req,res){
         try{
-            const {user} = req.headers
+            const {user} = req.headers 
             console.log(req.headers);
             const ocurrances = await Ocurrance.find().populate('user');
             res.json(ocurrances);
