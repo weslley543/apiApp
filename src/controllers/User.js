@@ -19,9 +19,9 @@ module.exports = {
         }
         user.password = undefined;
         
-        const token = jwt.sign({id:user.id}, authConfig.secret,{expiresIn:86400})
+        const token = jwt.sign({id:user.id}, authConfig.secret,{expiresIn:3600})
         
-        res.send({user, token}); 
+        res.status(200).send({user, token}); 
        }
        catch(err){
            res.status(401).json({msg:'err'});
