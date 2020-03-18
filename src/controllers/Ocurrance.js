@@ -4,11 +4,11 @@ module.exports={
     async register(req,res){
         try{
             const {filename} = req.file;
-            console.log(filename);
-            const {user} = req.headers;
-            console.log(user);
+            //console.log(req.headers);
+            const {user} = req.params;
             const ocurrance = await Ocurrance.create({ ...req.body,img:filename, user});
             res.status(200).json(ocurrance);
+            // res.status(200).json({msg:'teste'})
         }catch(err){
             res.status(401).json({msg:err});
         }
@@ -16,8 +16,7 @@ module.exports={
     async index(req,res){
         try{
             const {user} = req.headers 
-            console.log(req.headers);
-            const ocurrances = await Ocurrance.find().populate('user');
+            const ocurrances = await Ocurrance.find().populate('user', user);
             res.json(ocurrances);
         }catch(ocurrance){
             res.json({msg:'Erro ao receber as ocorrencias'});

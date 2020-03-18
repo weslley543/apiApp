@@ -1,6 +1,10 @@
 const express = require('express');
 const truckController = require('../controllers/Truck');
 const truckRoutes = express.Router();
+const authmiddlaware = require('../middlewares/auth');
+
+truckRoutes.use(authmiddlaware);
+
 
 truckRoutes.post('/truck', (req,res)=>{
     truckController.register(req,res);
