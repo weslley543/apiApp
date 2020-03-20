@@ -6,9 +6,6 @@ module.exports={
             const {filename} = req.file;
             console.log(req.body);
             const {user} = req.params;
-            if(req.body.createdAt === undefined){
-                req.body.createdAt = Date.now();
-            }
             const ocurrance = await Ocurrance.create({ ...req.body,img:filename, user});
             res.status(200).json(ocurrance);
             // res.status(200).json({msg:'teste'})
