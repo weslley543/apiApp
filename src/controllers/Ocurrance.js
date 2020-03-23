@@ -4,13 +4,12 @@ module.exports={
     async register(req,res){
         try{
             const {filename} = req.file;
-            console.log(req.body);
-            const {user} = req.params;
+            const {user} = req.headers;
             const ocurrance = await Ocurrance.create({ ...req.body,img:filename, user});
             res.status(200).json(ocurrance);
-            // res.status(200).json({msg:'teste'})
+            
         }catch(err){
-            res.status(401).json({msg:err});
+            res.status(401).json({msg:err})
         }
     },
     async index(req,res){

@@ -28,15 +28,11 @@ const OcurranceSchema = new mongoose.Schema({
     },
     createdAt:{
         type:Date,
-        require:true
+        require:true,
+        default:Date.now
     },
     resolvedAt:{
         type:Date,
-        require:false
-    },
-    assignedTo:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
         require:false
     }
 },{
