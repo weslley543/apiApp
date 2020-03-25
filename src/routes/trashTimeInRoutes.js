@@ -3,4 +3,25 @@ const TrashTimeIn = require('../controllers/TrashTimeIn');
 const TrashTimeInRoutes = express.Router();
 const authmiddlaware = require('../middlewares/auth')
 
-TrashTimeInRoutes.post()
+
+TrashTimeInRoutes.use(authmiddlaware);
+
+TrashTimeInRoutes.post('/trashtimein', (req,res)=>{
+    TrashTimeIn.register(req,res);
+});
+
+TrashTimeInRoutes.get('/trashtimein', (req,res)=>{
+    TrashTimeIn.getAll(req,res);
+});
+
+TrashTimeInRoutes.get('/trashtimein/:idCidade', (req,res)=>{
+    TrashTimeIn.getByCity(req,res);
+})
+
+TrashTimeIn.patch('/trashtimein/:idHorario', (req,res)=>{
+    TrashTimeIn.updateHour(req,res);
+})
+
+TrashTimeIn.delete('/trashtimein/:idHorario', (req,res)=>{
+    TrashTimeIn.delete(req,res);
+})
