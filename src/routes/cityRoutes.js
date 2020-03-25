@@ -1,7 +1,7 @@
 const express = require('express');
-const City = require('../controllers/City');
-const cityRoutes = express.Router;
+const City = require('../controllers/City')
 const authmiddlaware = require('../middlewares/auth');
+const cityRoutes = express.Router();
 
 cityRoutes.use(authmiddlaware);
 
@@ -21,6 +21,8 @@ cityRoutes.patch('/city/:id', (req,res)=>{
     City.update(req,res);
 })
 
-cityRoutes.delete('city/:id', (req,res)=>{
-    City.delete(req,res);
+cityRoutes.delete('/city/:id', (req,res)=>{
+    City.remove(req,res);
 })
+
+module.exports = cityRoutes;
