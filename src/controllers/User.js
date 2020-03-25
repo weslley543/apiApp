@@ -7,7 +7,6 @@ module.exports = {
     async login (req,res){
         const {email, password} = req.body;
         let hash = crypto.createHash("SHA512").update(password).digest("hex");
-        console.log('login');
        try{
         let user = await User.findOne({email}).select('+password');
         if(!user){
@@ -19,12 +18,12 @@ module.exports = {
         }
         user.password = undefined;
         
-        const token = jwt.sign({id:user.id}, authConfig.secret,{expiresIn:86400})
-        
-        res.send({user, token}); 
+        const token = jwt.sign({user}, authConfig.secret,{expiresIn:3600})
+        const id = user._id
+        res.status(200).send({token, id}); 
        }
        catch(err){
-           res.status(401).json({msg:'err'});
+           res.status(401).json({msg:err});
        }
 
     },
