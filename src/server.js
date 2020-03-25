@@ -2,7 +2,8 @@ const express = require('express');
 const userRoutes = require('./routes/userRoutes');
 const ocurranceRoutes = require('./routes/occurrenceRoutes');
 const truckRoutes = require('./routes/trucksRoutes');
-const cityRoutes = require('./routes/cityRoutes')
+const cityRoutes = require('./routes/cityRoutes');
+const trashTimeInRoutes = require('./routes/trashTimeInRoutes');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -22,6 +23,8 @@ app.use(userRoutes);
 app.use(ocurranceRoutes);
 app.use(truckRoutes);
 app.use(cityRoutes);
+app.use(trashTimeInRoutes);
+
 
 
 app.use('/files',express.static(path.resolve(__dirname,"..","uploads")));

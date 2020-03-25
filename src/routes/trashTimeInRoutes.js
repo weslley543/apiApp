@@ -16,12 +16,14 @@ TrashTimeInRoutes.get('/trashtimein', (req,res)=>{
 
 TrashTimeInRoutes.get('/trashtimein/:idCidade', (req,res)=>{
     TrashTimeIn.getByCity(req,res);
-})
+});
 
-TrashTimeIn.patch('/trashtimein/:idHorario', (req,res)=>{
+TrashTimeInRoutes.patch('/trashtimein/:idHorario', (req,res)=>{
     TrashTimeIn.updateHour(req,res);
-})
+});
 
-TrashTimeIn.delete('/trashtimein/:idHorario', (req,res)=>{
+TrashTimeInRoutes.delete('/trashtimein/:idHorario', (req,res)=>{
     TrashTimeIn.delete(req,res);
-})
+});
+
+module.exports = TrashTimeInRoutes
