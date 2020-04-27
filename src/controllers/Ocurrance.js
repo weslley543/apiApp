@@ -14,7 +14,7 @@ module.exports={
     },
     async index(req,res){
         try{
-            const {user} = req.headers 
+            const {user} = req.headers  
             const ocurrances = await Ocurrance.find().populate('user', user);
             res.json(ocurrances);
         }catch(ocurrance){
