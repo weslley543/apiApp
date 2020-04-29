@@ -4,7 +4,6 @@ const ocurranceRoutes = require('./routes/occurrenceRoutes');
 const truckRoutes = require('./routes/trucksRoutes');
 const cityRoutes = require('./routes/cityRoutes');
 const trashTimeInRoutes = require('./routes/trashTimeInRoutes');
-const emailRouter = require('./routes/emailRoutes');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -21,7 +20,6 @@ mongoose.connect('mongodb+srv://weslley:weslley1234@cluster0-tcv4s.mongodb.net/C
 app.use(cors());
 app.use(express.json());
 app.use(userRoutes);
-app.use(emailRouter);
 app.use(ocurranceRoutes);
 app.use(truckRoutes);
 app.use(cityRoutes);
