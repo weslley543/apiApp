@@ -1,47 +1,25 @@
 const Ocurrance = require('../models/Ocurrance');
-const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+
 module.exports = {
     async register(req, res) {
         try {
             const { filename } = req.file;
-            const { user } = req.headers;
-            
-          
-            const encrypted = crypto.createHash("SHA512").randomBytes(3).toString('hex');
-            res.send(encrypted);
-            // const ocurrance = await Ocurrance.create({ ...req.body, img: filename, user });
-            // const { email, protocol } = req.body
-            // let transporter = await nodemailer.createTransport(
-            //     {
-            //         host: 'smtp.googlemail.com', // Gmail Host
-            //         port: 465, // Port
-            //         secure: true, // this is true as port is 465
-            //         auth: {
-            //             user: 'weslley082@gmail.com', //Gmail username
-            //             pass: 'weslley1234' // Gmail password
-            //         }
-            //     }
-            // );
+            const { authorization } = req.headers;
+            const parts = authorization.split(' ');
+            const decoded = jwt.decode(parts[1]);
+            const protocol = crypto.randomBytes(3).toString('hex');
 
-            // try {
-            //     await transporter.sendMail({
-            //         from: 'weslley082@gmail.com',
-            //         to: email,
-            //         subject: 'Protocolo de registro do serviço',
-            //         html: `<b>O seu protocolo dos serviços é ${protocol}</b>`
-            //     });
-            //     res.status(200).send({ ok: true });
-            // } catch (err) {
-            //     res.status(401).send(err)
-            // }
-
-
+            const ocurrance = await Ocurrance.create({
+                ...req.body,
+                img: filename, protocol, user: decoded.user._id
+            });
 
             res.status(200).json(ocurrance);
 
         } catch (err) {
-            res.status(401).json({ msg: err })
+            res.status(403).json({ msg: err })
         }
     },
     async index(req, res) {

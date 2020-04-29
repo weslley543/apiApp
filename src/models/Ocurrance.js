@@ -34,6 +34,10 @@ const OcurranceSchema = new mongoose.Schema({
     resolvedAt:{
         type:Date,
         require:false
+    },
+    protocol:{
+        type:String,
+        require:false
     }
 },{
     toJSON:{

@@ -3,6 +3,7 @@ const userRoutes = require('./routes/userRoutes');
 const ocurranceRoutes = require('./routes/occurrenceRoutes');
 const truckRoutes = require('./routes/trucksRoutes');
 const cityRoutes = require('./routes/cityRoutes');
+const emailRoutes = require('./routes/emailRoutes');
 const trashTimeInRoutes = require('./routes/trashTimeInRoutes');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -17,10 +18,12 @@ mongoose.connect('mongodb+srv://weslley:weslley1234@cluster0-tcv4s.mongodb.net/C
     useUnifiedTopology:true,
     useCreateIndex: true
 });
+
 app.use(cors());
 app.use(express.json());
 app.use(userRoutes);
 app.use(ocurranceRoutes);
+app.use(emailRoutes); 
 app.use(truckRoutes);
 app.use(cityRoutes);
 app.use(trashTimeInRoutes);

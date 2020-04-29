@@ -11,19 +11,19 @@ ocurrenceRoutes.use(authmiddlaware);
 const upload = multer(uploadConfig);
 
 
-ocurrenceRoutes.get('/ocurrance/:id', (req,res)=>{
-    Ocurrence.getOne(req,res);
+ocurrenceRoutes.get('/ocurrance/:id', (req, res) => {
+    Ocurrence.getOne(req, res);
 });
 
-ocurrenceRoutes.post('/ocurrance',upload.single('img'), (req,res)=>{
-    Ocurrence.register(req,res);
+ocurrenceRoutes.post('/ocurrance', upload.single('img'), (req, res) => {
+    Ocurrence.register(req, res);
 });
 
-ocurrenceRoutes.get('/ocurrance' , (req,res)=>{
-    Ocurrence.index(req,res);
+ocurrenceRoutes.get('/ocurrance', (req, res) => {
+    Ocurrence.index(req, res);
 });
 
-ocurrenceRoutes.delete('/ocurrance/:id', (req,res)=>{
-    Ocurrence.deleteOne(req,res);
+ocurrenceRoutes.delete('/ocurrance/:id', (req, res) => {
+    Ocurrence.deleteOne(req, res);
 });
 module.exports = ocurrenceRoutes;
