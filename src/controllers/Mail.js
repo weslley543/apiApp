@@ -19,8 +19,8 @@ module.exports = {
              await transporter.sendMail({
                 from: 'weslley082@gmail.com',
                 to: email,
-                subject: 'Protocolo dos serviços',
-                html: `O seu protocolo dos serviços é ${protocol}`
+                subject: 'Protocolo de registro do serviço',
+                html: `<b>O seu protocolo dos serviços é ${protocol}</b>`
             });
             res.status(200).send({ ok: true });
         } catch (err) {
