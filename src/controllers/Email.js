@@ -23,7 +23,7 @@ module.exports = {
                 from: 'weslley082@gmail.com',
                 to: decoded.user.email,
                 subject: 'Protocolo dos serviços',
-                html: `O seu protocolo dos serviços é ${protocol}, utilize-o para acompanhar a solução da ocorrência relatada.`
+                html: `O seu protocolo dos serviços é <b>${protocol} </b>, utilize-o para acompanhar a solução da ocorrência relatada.`
             });
             res.status(200).json({ ok: true });
         } catch (err) {
