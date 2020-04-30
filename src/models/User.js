@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+mongoose.set('useFindAndModify', false);
 const UserSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -19,6 +19,14 @@ const UserSchema = new mongoose.Schema({
         type:Date,
         default:Date.now,
         require:true
+    },
+    recoveryToken:{
+        type:String,
+        require:false
+    },
+    expiresIn:{
+        type:Date,
+        require:false
     }
 });
 

@@ -31,6 +31,7 @@ app.use(trashTimeInRoutes);
 
 
 app.use('/files',express.static(path.resolve(__dirname,"..","uploads")));
+process.env.TZ='America/Sao_Paulo'
 const port = process.env.PORT || 8080;
 
 app.listen(port, function(){

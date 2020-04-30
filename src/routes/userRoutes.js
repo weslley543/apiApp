@@ -11,4 +11,12 @@ userRoutes.post('/register', async (req,res)=>{
     User.store(req,res);
 })
 
+userRoutes.post('/recoveryPassword', async (req,res)=>{
+    User.recoveryPassword(req,res);
+})
+
+userRoutes.patch('/resetPassword', async (req,res) =>{
+    User.resetPassword(req,res);
+})
+
 module.exports = userRoutes;
