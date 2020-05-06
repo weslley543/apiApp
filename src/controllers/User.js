@@ -110,5 +110,38 @@ module.exports = {
         } catch (err) {
             res.status(400).json({ msg: 'Ocorreu um erro na requisição' })
         }
-    }
+    },
+    async getUser(req, res) {
+        const { id } = req.params;
+        try {
+            const user = await User.findOne({ _id: id });
+            res.status(200).json(user);
+        } catch (e) {
+            res.status(400).json({ msg: 'Usuario não encontrado' })
+        }
+    },
+    async updateUser(req, res) {
+        try {
+            const { _id } = req.body;
+            const { filename } = req.file
+            if (req.body.password !== '') {
+
+                let { password } = req.body;
+                password = crypto.createHash("SHA512").update(password).digest("hex");
+                req.body.password = password;
+
+            } else {
+                delete req.body.password;
+            }
+
+
+            await User.findByIdAndUpdate({ _id }, {...req.body, avatar:filename});
+            const user = await User.findById({ _id });
+
+            res.status(200).json(user);
+        } catch (e) {
+            console.log(e);
+        }
+
+    },
 }
