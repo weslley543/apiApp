@@ -6,24 +6,24 @@ const authmiddlaware = require('../middlewares/auth');
 const ocurrenceRoutes = express.Router();
 
 
-ocurrenceRoutes.use(authmiddlaware);
+
 
 const upload = multer(uploadConfig);
 
 
-ocurrenceRoutes.get('/ocurrance/:id', (req, res) => {
+ocurrenceRoutes.get('/ocurrance/:id',authmiddlaware ,(req, res) => {
     Ocurrence.getOne(req, res);
 });
 
-ocurrenceRoutes.post('/ocurrance', upload.single('img'), (req, res) => {
+ocurrenceRoutes.post('/ocurrance', upload.single('img'),authmiddlaware, (req, res) => {
     Ocurrence.register(req, res);
 });
 
-ocurrenceRoutes.get('/ocurrance', (req, res) => {
+ocurrenceRoutes.get('/ocurrance',authmiddlaware, (req, res) => {
     Ocurrence.index(req, res);
 });
 
-ocurrenceRoutes.delete('/ocurrance/:id', (req, res) => {
+ocurrenceRoutes.delete('/ocurrance/:id',authmiddlaware, (req, res) => {
     Ocurrence.deleteOne(req, res);
 });
 module.exports = ocurrenceRoutes;

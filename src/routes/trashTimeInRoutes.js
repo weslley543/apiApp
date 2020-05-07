@@ -4,25 +4,24 @@ const TrashTimeInRoutes = express.Router();
 const authmiddlaware = require('../middlewares/auth')
 
 
-TrashTimeInRoutes.use(authmiddlaware);
 
-TrashTimeInRoutes.post('/trashtimein', (req,res)=>{
+TrashTimeInRoutes.post('/trashtimein',authmiddlaware ,(req,res)=>{
     TrashTimeIn.register(req,res);
 });
 
-TrashTimeInRoutes.get('/trashtimein', (req,res)=>{
+TrashTimeInRoutes.get('/trashtimein',authmiddlaware ,(req,res)=>{
     TrashTimeIn.getAll(req,res);
 });
 
-TrashTimeInRoutes.get('/trashtimein/:idCidade', (req,res)=>{
+TrashTimeInRoutes.get('/trashtimein/:idCidade',authmiddlaware ,(req,res)=>{
     TrashTimeIn.getByCity(req,res);
 });
 
-TrashTimeInRoutes.patch('/trashtimein/:idHorario', (req,res)=>{
+TrashTimeInRoutes.patch('/trashtimein/:idHorario',authmiddlaware ,(req,res)=>{
     TrashTimeIn.updateHour(req,res);
 });
 
-TrashTimeInRoutes.delete('/trashtimein/:idHorario', (req,res)=>{
+TrashTimeInRoutes.delete('/trashtimein/:idHorario',authmiddlaware ,(req,res)=>{
     TrashTimeIn.delete(req,res);
 });
 

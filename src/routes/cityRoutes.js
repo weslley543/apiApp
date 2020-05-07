@@ -3,25 +3,24 @@ const City = require('../controllers/City')
 const authmiddlaware = require('../middlewares/auth');
 const cityRoutes = express.Router();
 
-cityRoutes.use(authmiddlaware);
 
-cityRoutes.post('/city', (req,res)=>{
+cityRoutes.post('/city',authmiddlaware ,(req,res)=>{
     City.register(req,res);
 });
 
-cityRoutes.get('/city', (req,res)=>{
+cityRoutes.get('/city',authmiddlaware, (req,res)=>{
     City.getAll(req,res);
 });
 
-cityRoutes.get('/city/:id', (req,res)=>{
+cityRoutes.get('/city/:id',authmiddlaware, (req,res)=>{
     City.getOne(req,res);
 })
 
-cityRoutes.patch('/city/:id', (req,res)=>{
+cityRoutes.patch('/city/:id',authmiddlaware ,(req,res)=>{
     City.update(req,res);
 })
 
-cityRoutes.delete('/city/:id', (req,res)=>{
+cityRoutes.delete('/city/:id',authmiddlaware ,(req,res)=>{
     City.remove(req,res);
 })
 

@@ -133,7 +133,7 @@ module.exports = {
             } else {
                 delete req.body.password;
             }
-   
+            delete req.body._id;
 
             await User.findByIdAndUpdate({ _id }, {...req.body, avatar:filename});
             const user = await User.findById({ _id });

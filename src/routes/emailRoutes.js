@@ -4,9 +4,8 @@ const emailRoutes = express.Router();
 const Email = require('../controllers/Email');
 const authmiddlaware = require('../middlewares/auth');
 
-emailRoutes.use(authmiddlaware);
 
-emailRoutes.post('/protocolEmail', (req,res)=>{
+emailRoutes.post('/protocolEmail',authmiddlaware ,(req,res)=>{
     Email.sendNumberProtocol(req,res);
 });
 
